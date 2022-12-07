@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 export class ProductList extends Component {
   render() {
     let products = this.props.cart;
-    if (this.props.checked.length > 0) {
-      products = products.filter((data) =>
-        this.props.checked.includes(data.size)
-      );
+    if (this.props.filter) {
+      products = products.filter((data) => this.props.filter === data.size);
     }
+
     const productList = products.map((data, index) => {
       return (
         <div key={index}>
