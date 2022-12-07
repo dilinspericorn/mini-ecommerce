@@ -1,0 +1,22 @@
+.cart-items{
+    height: 5rem;
+    border: rgb(197, 197, 197) solid 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter-cart{
+    border: rgb(197, 197, 197) solid 2px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.image-size{
+    height: 20rem;
+}
+.product-list{
+    border: rgb(197, 197, 197) solid 2px;
+
+}
