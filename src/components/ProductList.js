@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 
 export class ProductList extends Component {
   render() {
+    // console.log(this.props.filter.length);
     let products = this.props.cart;
-    if (this.props.filter) {
-      products = products.filter((data) => this.props.filter === data.size);
+
+    if (this.props.filter.length > 0) {
+      products = products.filter((data) =>
+        this.props.filter.includes(data.size)
+      );
+      console.log(products);
     }
+    // console.log(products);
 
     const productList = products.map((data, index) => {
       return (

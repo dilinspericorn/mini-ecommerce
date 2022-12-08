@@ -7,12 +7,20 @@ import ProductList from './ProductList';
 export class App extends Component {
   state = {
     cartItems: [],
-    filter: null,
+    filter: [],
   };
 
   onFilterChange = (filter) => {
+    console.log('add', filter);
     this.setState({
-      filter: filter,
+      filter: [...this.state.filter, filter],
+    });
+  };
+
+  removeFilter = (filter) => {
+    console.log('remove', filter);
+    this.setState({
+      filter: this.state.filter.filter((data) => data !== filter),
     });
   };
 
@@ -26,6 +34,7 @@ export class App extends Component {
   };
 
   render() {
+    console.log(this.state.filter);
     return (
       <div className="container">
         <div>
@@ -36,6 +45,7 @@ export class App extends Component {
           <FilterCart
             cart={Cart}
             onFilterChange={this.onFilterChange}
+            removeFilter={this.removeFilter}
             filter={this.state.filter}
           />
           <ProductList
