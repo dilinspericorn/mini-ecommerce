@@ -7,18 +7,20 @@ import ProductList from './ProductList';
 export class App extends Component {
   state = {
     cartItems: [],
-    checked: [],
+    filter: [],
   };
 
-  getChecked = (e) => {
+  onFilterChange = (filter) => {
+    console.log('add', filter);
     this.setState({
-      checked: [...this.state.checked, e],
+      filter: [...this.state.filter, filter],
     });
   };
-  removeChecked = (e) => {
-    console.log(e);
+
+  removeFilter = (filter) => {
+    console.log('remove', filter);
     this.setState({
-      checked: this.state.checked.filter((data) => data !== e),
+      filter: this.state.filter.filter((data) => data !== filter),
     });
   };
 
@@ -32,24 +34,25 @@ export class App extends Component {
   };
 
   render() {
+    console.log(this.state.filter);
     return (
-      <div className='container'>
+      <div className="container">
         <div>
           <CartItems cart={this.state.cartItems} />
         </div>
 
-        <div className='d-flex'>
+        <div className="d-flex">
           <FilterCart
             cart={Cart}
-            getChecked={this.getChecked}
-            removeChecked={this.removeChecked}
-            checked={this.state.checked}
+            onFilterChange={this.onFilterChange}
+            removeFilter={this.removeFilter}
+            filter={this.state.filter}
           />
           <ProductList
             cart={Cart}
             getCartItems={this.getCartItems}
             cartItems={this.state.cartItems}
-            checked={this.state.checked}
+            filter={this.state.filter}
           />
         </div>
       </div>
