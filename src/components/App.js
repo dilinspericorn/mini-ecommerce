@@ -5,10 +5,19 @@ import FilterCart from './FilterCart';
 import ProductList from './ProductList';
 
 export class App extends Component {
-  state = {
-    cartItems: [],
-    filter: [],
-  };
+  constructor() {
+    super();
+    localStorage.setItem('cart', JSON.stringify(Cart));
+    this.state = {
+      cart: JSON.parse(localStorage.getItem('cart')),
+      cartItems: [],
+      filter: [],
+    };
+  }
+
+  // state = {
+
+  // };
 
   onFilterChange = (filter) => {
     console.log('add', filter);
